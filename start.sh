@@ -2,7 +2,7 @@
 echo "Hola"
 echo "primero actualizaremos el sistema"
 sudo apt update && sudo apt upgrade -y
-echo "instalamos zsh"
+echo "instalamos zsh vscode firacode"
 sudo apt install zsh vscode fonts-firacode -y
 
 echo "instalamos volta"
