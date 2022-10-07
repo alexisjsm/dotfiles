@@ -1,9 +1,15 @@
 #!/bin/bash
 echo "Hola"
 echo "primero actualizaremos el sistema"
-sudo apt update && sudo apt upgrade -y
-echo "instalamos zsh vscode firacode"
-sudo apt install zsh vscode fonts-firacode -y
+sudo dnf upgrade -y
+echo "instalamos zsh firacode"
+sudo dnf install zsh fira-code-fonts -y
+
+echo "instalamos vscode"
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+dnf check-update
+sudo dnf install code
 
 echo "instalamos volta"
 curl https://get.volta.sh | bash
@@ -33,3 +39,5 @@ git clone https://github.com/alexisjsm/dotfiles.git
 echo "enlanzamos"
 ln -s ~/.config/dotfiles/.zshrc  ~/.zshrc
 ln -s ~/.config/dotfiles/.zshrc  ~/.vimrc
+
+echo "fin"
