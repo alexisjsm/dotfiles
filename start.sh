@@ -2,16 +2,21 @@
 echo "Hola"
 echo "primero actualizaremos el sistema"
 sudo apt install update -y && sudo apt intall upgrade -y
-echo "instalamos zsh firacode"
-sudo apt install zsh fira-code-fonts -y
+
+echo "instalamos zsh y firacode"
+sudo apt install zsh fonts-firacode -y
 
 echo "instalamos volta"
 curl https://get.volta.sh | bash
+
 echo "instalando node y yarn"
 ~/.volta/bin/volta install node@lts yarn 
 
 echo "instalando OH-MY-ZSH"
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+echo "haciendo zsh por defecto"
+chsh -s $(which zsh)
 
 echo "instalando extensiones..."
 
@@ -30,8 +35,11 @@ cd ~/.config/
 echo "clonamos dotfiles"
 git clone https://github.com/alexisjsm/dotfiles.git
 
+echo "borrado por defecto"
+rm ~/.zshrc
+
 echo "enlanzamos"
 ln -s ~/.config/dotfiles/.zshrc  ~/.zshrc
-ln -s ~/.config/dotfiles/.zshrc  ~/.vimrc
+ln -s ~/.config/dotfiles/.vimrc  ~/.vimrc
 
 echo "fin"
