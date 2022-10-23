@@ -1,19 +1,27 @@
 #!/bin/bash
 echo "Hola"
 echo "primero actualizaremos el sistema"
-sudo apt install update -y && sudo apt intall upgrade -y
+sudo dnf upgrade --refresh -y 
+sleep 5
 
 echo "instalamos zsh y firacode"
-sudo apt install zsh fonts-firacode -y
+sudo dnf install zsh util-linux-user fira-code-fonts -y
+sleep 3
+
+echo "agregando zsh como interprete por defecto"
+chsh -s $(which zsh)
+sleep 3
 
 echo "instalamos volta"
 curl https://get.volta.sh | bash
 
 echo "instalando node y yarn"
 ~/.volta/bin/volta install node@lts yarn 
+sleep 3
 
 echo "instalando OH-MY-ZSH"
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sleep 3
 
 echo "haciendo zsh por defecto"
 chsh -s $(which zsh)
@@ -29,6 +37,8 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 echo "clonamos powerlevel10k"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
+sleep 3
+
 echo "nos movemos a .config"
 cd ~/.config/
 
@@ -37,9 +47,10 @@ git clone https://github.com/alexisjsm/dotfiles.git
 
 echo "borrado por defecto"
 rm ~/.zshrc
+sleep 3
 
 echo "enlanzamos"
 ln -s ~/.config/dotfiles/.zshrc  ~/.zshrc
 ln -s ~/.config/dotfiles/.vimrc  ~/.vimrc
-
+ln -s ~/.config/dotfiles/.p10k.zsh ~/.p10k.zsh
 echo "fin"
