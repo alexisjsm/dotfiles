@@ -6,10 +6,10 @@ sleep 5
 
 echo "instalamos zsh"
 sudo apt install zsh -y
-sleep 3
+sleep 10
 echo "agregando zsh como interprete por defecto"
 chsh -s $(which zsh)
-sleep 3
+sleep 10
 
 echo "instalamos volta"
 curl https://get.volta.sh | bash
