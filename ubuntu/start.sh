@@ -5,7 +5,7 @@ sudo sudo apt update -y && sudo apt upgrade -y
 sleep 5
 
 echo "instalamos zsh"
-sudo apt get zsh -y
+sudo apt install zsh -y
 sleep 3
 echo "agregando zsh como interprete por defecto"
 chsh -s $(which zsh)
