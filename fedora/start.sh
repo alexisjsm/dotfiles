@@ -6,7 +6,7 @@ sleep 5
 
 echo "instalamos zsh y firacode"
 sudo dnf install zsh util-linux-user fira-code-fonts -y
-sleep 3
+sleep 5
 
 echo "agregando zsh como interprete por defecto"
 chsh -s $(which zsh) $USER
@@ -40,7 +40,7 @@ sleep 5
 echo "comprobando carpeta .config"
 if [ ! -d ~/.config ]; then
 		echo "creando .config"
-		mkdir ~/.config
+		mkdir -p ~/.config
 fi
 
 echo "nos movemos a .config"
